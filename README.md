@@ -1,222 +1,101 @@
+# فروشگاه HOYLOTT با پرداخت کارت‌به‌کارت و ارسال رسید
 
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0f19">
-<title>HOYLOTT | سرور ماینکرفت</title>
-<style>
-:root{--bg:#0b0f19;--panel:#151d2e;--gold:#facc15;--green:#34d399;--muted:#aab4c8}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{margin:0;background:var(--bg);color:#f8fafc;font-family:Tahoma,Arial,sans-serif;line-height:1.9}
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
-.wrap{width:min(1100px,92%);margin:auto}
-header{position:sticky;top:0;z-index:10;background:#0b0f19f5;border-bottom:1px solid #34303a}
-nav{min-height:75px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.logo{font-size:25px;font-weight:900;color:var(--gold);letter-spacing:1px}
-.links{display:flex;align-items:center;gap:20px}
-.links a:hover{color:var(--gold)}
-.btn{border:0;border-radius:12px;padding:12px 20px;background:var(--gold);color:#151515;font-weight:900}
-.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
-.menu{display:none}
-.hero{text-align:center;padding:95px 0 65px;background:radial-gradient(ellipse at top,#453714 0%,#151725 38%,var(--bg) 75%)}
-.pill{display:inline-block;border:1px solid #80691c;border-radius:30px;padding:5px 15px;color:var(--gold);background:#facc1510}
-h1{font-size:clamp(38px,7vw,72px);line-height:1.3;margin:25px 0 10px}
-.gold{color:var(--gold)}
-.subtitle{font-size:clamp(19px,3vw,27px);font-weight:bold}
-.desc{color:var(--muted);max-width:700px;margin:15px auto}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 45px}
-.secondary{background:#202b40;color:white;border:1px solid #39445a}
-.stats,.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.stat,.card,.news,.connect,.faq{background:var(--panel);border:1px solid #343344;border-radius:18px;padding:22px}
-.stat{text-align:right}
-.stat small{display:block;color:var(--muted)}
-.stat strong{font-size:18px}
-section{padding:75px 0}
-.alt{background:#11182780}
-.heading{text-align:center;margin:0 auto 35px;max-width:700px}
-.heading h2{font-size:clamp(27px,4vw,39px);margin:0 0 10px}
-.heading p,.card p,.news p{color:var(--muted)}
-.card{padding:27px;transition:.2s}
-.card:hover,.news:hover{border-color:#b99a27;transform:translateY(-4px)}
-.icon{font-size:35px}
-.card h3,.news h3{margin:7px 0}
-.news{padding:0;overflow:hidden}
-.newsbar{height:8px;background:linear-gradient(90deg,#facc15,#34d399,#8b5cf6)}
-.newsbody{padding:23px}
-.date{color:var(--gold);font-size:13px}
-.connect{text-align:center;padding:35px}
-.iprow{display:flex;gap:10px;max-width:520px;margin:25px auto 10px}
-input{min-width:0;flex:1;background:var(--bg);color:var(--gold);border:1px solid #4b5563;border-radius:12px;text-align:center;padding:13px;font-size:17px}
-#feedback{color:var(--green);min-height:30px}
-.faq{padding:0;margin:12px auto;max-width:800px}
-.question{display:block;width:100%;text-align:right;color:white;background:none;border:0;padding:18px;font-weight:bold}
-.answer{padding:0 18px 18px;color:var(--muted)}
-.answer[hidden]{display:none}
-footer{border-top:1px solid #343344;padding:28px 0;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-@media(max-width:760px){
- .links{display:none;position:absolute;top:75px;left:0;right:0;background:#111827;padding:20px;flex-direction:column}
- .links.open{display:flex}
- .menu{display:block;background:transparent;color:var(--gold);border:1px solid #55491c;border-radius:9px;padding:7px 12px}
- .navbtn{display:none}
- .grid,.stats{grid-template-columns:1fr}
- .hero{padding-top:65px}
- section{padding:55px 0}
- .iprow{flex-direction:column}
-}
-</style>
-</head>
-<body>
-<header>
-<nav class="wrap">
-<a class="logo" href="#home">⬡ HOYLOTT</a>
-<div class="links" id="links">
-<a href="#home">خانه</a>
-<a href="#features">ویژگی‌ها</a>
-<a href="#news">اخبار</a>
-<a href="#server">اتصال به سرور</a>
-<a href="#faq">راهنما</a>
-<button class="btn" onclick="copyIP()">کپی IP</button>
-</div>
-<button class="menu" id="menu" aria-label="منو">☰</button>
-<button class="btn navbtn" onclick="copyIP()">ورود به سرور</button>
-</nav>
-</header>
+این نسخه به‌جای زرین‌پال، سفارش کارت‌به‌کارت ثبت می‌کند. بازیکن نام کاربری و محصول را انتخاب می‌کند، شماره کارت نمایش داده می‌شود و فایل رسید را ارسال می‌کند. Worker رسید را به ایمیل `salehamini214@gmail.com` می‌فرستد. **هیچ سفارشی با صرف ارسال رسید پرداخت‌شده محسوب نمی‌شود**؛ مدیر باید ابتدا واریز را در حساب بانکی تأیید کند و سپس سفارش را approve کند. بعد از تأیید، پلاگین موجود سفارش را خودکار تحویل می‌دهد.
 
-<main>
-<section class="hero" id="home">
-<div class="wrap">
-<span class="pill">⛏️ سرور ماینکرفت HOYLOTT</span>
-<h1>به دنیای <span class="gold">HOYLOTT</span><br>خوش آمدی!</h1>
-<div class="subtitle">یک دنیای جدید، یک ماجراجویی بی‌پایان</div>
-<p class="desc">منابع جمع کن، خانه و قلعه بساز، با دوستانت بازی کن و داستان خودت را در دنیای Survival بساز!</p>
-<div class="actions">
-<button class="btn" onclick="copyIP()">🎮 کپی آدرس و ورود</button>
-<a class="btn secondary" href="#news">📰 اخبار سرور</a>
-</div>
-<div class="stats">
-<div class="stat">🌲 <small>حالت بازی</small><strong>Survival</strong></div>
-<div class="stat">🧱 <small>نسخه اعلام‌شده</small><strong>26.2</strong></div>
-<div class="stat">🌐 <small>آدرس سرور</small><strong dir="ltr">hoyloot.de5.net</strong></div>
-</div>
-</div>
-</section>
+## موارد امنیتی مهم
+- شماره کارت داخل سایت عمومی دیده می‌شود. اگر نمی‌خواهی شماره کارت به همه نمایش داده شود، از این روش استفاده نکن.
+- فایل رسید به‌صورت پیوست ایمیل ارسال می‌شود. ایمیل باید از طریق Resend و دامنه فرستندهٔ تأییدشده تنظیم شود.
+- کلید `RESEND_API_KEY`، `ADMIN_TOKEN` و `DELIVERY_TOKEN` فقط در Cloudflare Secrets باشند؛ هرگز در HTML یا مخزن عمومی قرار نگیرند.
+- قیمت‌ها در `cloudflare-worker/worker.js` نمونه‌اند؛ پیش از انتشار تغییرشان بده.
+- تحویل خودکار فقط بعد از تأیید دستی مدیر فعال می‌شود. هرگز با دیدن اسکرین‌شات به‌تنهایی پرداخت را تأیید نکن؛ تراکنش را در اپ/حساب بانکی بررسی کن.
 
-<section class="alt" id="features">
-<div class="wrap">
-<div class="heading"><h2>ویژگی‌های <span class="gold">HOYLOTT</span></h2><p>دنیای خودت را بساز و ماجراجویی را شروع کن!</p></div>
-<div class="grid">
-<article class="card"><div class="icon">🌲</div><h3>بقای واقعی</h3><p>منابع جمع‌آوری کن، تجهیزات بساز و برای زنده ماندن تلاش کن.</p></article>
-<article class="card"><div class="icon">🏰</div><h3>ساخت شهر و قلعه</h3><p>خانه، شهر و قلعه بساز و قلمرو خودت را گسترش بده.</p></article>
-<article class="card"><div class="icon">🤝</div><h3>بازی با دوستان</h3><p>دوستانت را دعوت کن و با هم ماجراجویی کنید.</p></article>
-</div>
-</div>
-</section>
+## 1) دیتابیس D1
 
-<section id="news">
-<div class="wrap">
-<div class="heading"><h2>اخبار و اطلاعیه‌ها</h2><p>آخرین خبرهای رسمی سرور را اینجا بخوان.</p></div>
-<div class="grid" id="newsContainer"></div>
-</div>
-</section>
+### دیتابیس جدید
+در Cloudflare یک D1 Database به نام `hoylott-shop` بساز و کل `cloudflare-worker/schema.sql` را اجرا کن.
 
-<section class="alt" id="server">
-<div class="wrap">
-<div class="connect">
-<h2>آماده‌ای وارد <span class="gold">HOYLOTT</span> شوی؟</h2>
-<p class="desc">آدرس را کپی کن و در بخش Multiplayer بازی وارد کن.</p>
-<div class="iprow">
-<input id="serverIP" value="hoyloot.de5.net" readonly aria-label="آدرس سرور">
-<button class="btn" onclick="copyIP()">📋 کپی آدرس</button>
-</div>
-<div id="feedback" role="status" aria-live="polite"></div>
-</div>
-</div>
-</section>
+### دیتابیس ساخته‌شده با نسخه قبلی فروشگاه
+به‌جای اجرای دوباره schema، فایل `cloudflare-worker/migration-manual-transfer.sql` را یک‌بار روی دیتابیس فعلی اجرا کن. این فایل ستون‌های لازم برای ثبت رسید را اضافه می‌کند.
 
-<section id="faq">
-<div class="wrap">
-<div class="heading"><h2>راهنمای اتصال</h2><p>سریع وارد بازی شو.</p></div>
-<div class="faq">
-<button class="question" aria-expanded="false">چطور به سرور وصل شوم؟　＋</button>
-<div class="answer" hidden>ماینکرفت Java را باز کن، وارد Multiplayer شو، Add Server را بزن و آدرس hoyloot.de5.net را وارد کن.</div>
-</div>
-<div class="faq">
-<button class="question" aria-expanded="false">چه نسخه‌ای لازم است؟　＋</button>
-<div class="answer" hidden>نسخه اعلام‌شده در سایت 26.2 است. اگر خطای اتصال دیدی، نسخه واقعی سرور را بررسی کن.</div>
-</div>
-<div class="faq">
-<button class="question" aria-expanded="false">چطور اخبار را ویرایش کنم؟　＋</button>
-<div class="answer" hidden>در فایل index.html بخش newsData را در پایین کد پیدا کن و خبرهای جدید را به آن اضافه کن.</div>
-</div>
-</div>
-</section>
-</main>
+## 2) Worker
 
-<footer><div class="wrap"><a class="logo" href="#home">HOYLOTT</a><span>© ۲۰۲۶ — سرور ماینکرفت HOYLOTT</span><a href="#home">بازگشت به بالا ↑</a></div></footer>
+Worker جداگانه‌ای بساز؛ Worker قبلی آمار سایت را جایگزین نکن. کد `cloudflare-worker/worker.js` را منتشر کن و Binding دیتابیس را اضافه کن:
 
-<script>
-// برای اضافه کردن خبر، یک مورد به آرایه زیر اضافه کن.
-const newsData = [
-  // {title:"شروع فصل جدید",date:"۱۴۰۵/۰۷/۲۲",category:"اطلاعیه",description:"متن خبر"}
-];
+- Variable: `HOYLOTT_DB`
+- Database: `hoylott-shop`
 
-function renderNews(){
- const container=document.getElementById("newsContainer");
- if(newsData.length===0){
-  container.innerHTML='<article class="news"><div class="newsbar"></div><div class="newsbody"><div class="date">📢 اطلاعیه</div><h3>به‌زودی خبرهای جدید</h3><p>هنوز خبری منتشر نشده؛ اطلاعیه‌های بعدی اینجا قرار می‌گیرند.</p></div></article>';
-  return;
- }
- newsData.forEach(item=>{
-  const article=document.createElement("article");
-  article.className="news";
-  const bar=document.createElement("div");bar.className="newsbar";
-  const body=document.createElement("div");body.className="newsbody";
-  const date=document.createElement("div");date.className="date";date.textContent=(item.category||"خبر")+" "+(item.date||"");
-  const title=document.createElement("h3");title.textContent=item.title||"خبر سرور";
-  const desc=document.createElement("p");desc.textContent=item.description||"";
-  body.append(date,title,desc);article.append(bar,body);container.append(article);
- });
-}
+در Worker → Settings → Variables and Secrets این مقادیر را بساز:
 
-async function copyIP(){
- const ip="hoyloot.de5.net";
- const feedback=document.getElementById("feedback");
- try{
-  if(navigator.clipboard&&window.isSecureContext){
-   await navigator.clipboard.writeText(ip);
-  }else{
-   const el=document.createElement("textarea");
-   el.value=ip;el.style.position="fixed";el.style.opacity="0";
-   document.body.appendChild(el);el.select();
-   const ok=document.execCommand("copy");el.remove();
-   if(!ok)throw Error("copy");
-  }
-  feedback.textContent="✅ آدرس کپی شد: "+ip;
- }catch(e){
-  const input=document.getElementById("serverIP");
-  input.focus();input.select();
-  feedback.textContent="آدرس انتخاب شد؛ Ctrl+C را بزن: "+ip;
- }
-}
+- Secret `RESEND_API_KEY`: کلید API حساب Resend
+- Variable `RESEND_FROM`: فرستنده تأییدشده، مثلاً `HOYLOTT Shop <orders@hoylott.ir>` (فقط پس از تأیید دامنه در Resend)
+- Secret `ADMIN_TOKEN`: یک رشته تصادفی قوی حداقل 32 بایت
+- Secret `DELIVERY_TOKEN`: همان رمز تصادفی قوی که پلاگین استفاده می‌کند
+- Variable `ALLOWED_ORIGINS`: دامنه‌های واقعی سایت، بدون مسیر؛ مثال `https://hoylott.ir,https://www.hoylott.ir,https://salehamini214.github.io`
 
-document.getElementById("menu").addEventListener("click",()=>{
- document.getElementById("links").classList.toggle("open");
-});
-document.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>{
- document.getElementById("links").classList.remove("open");
-}));
-document.querySelectorAll(".question").forEach(button=>button.addEventListener("click",()=>{
- const answer=button.nextElementSibling;
- const open=button.getAttribute("aria-expanded")==="true";
- button.setAttribute("aria-expanded",String(!open));
- answer.hidden=open;
-}));
-renderNews();
-</script>
-</body>
-</html>
+`RESEND_FROM` باید با دامنه‌ای باشد که در Resend مالکیتش را تأیید کرده‌ای. برای دریافت ایمیل، آدرس مقصد از قبل روی `salehamini214@gmail.com` تنظیم شده است.
+
+### تنظیم Resend
+1. در Resend حساب بساز و دامنه‌ای را که کنترل DNS آن را داری اضافه کن.
+2. رکوردهای DNS تأیید فرستنده را در ارائه‌دهنده DNS دامنه وارد و تأیید کن.
+3. API key بساز و فقط به‌صورت Secret به Worker بده.
+4. یک فایل رسید آزمایشی ارسال کن و رسیدن ایمیل و پیوست را بررسی کن.
+
+آدرس `/health` باید این خروجی را بدهد: `{"ok":true,"service":"HOYLOTT Manual Transfer Shop API"}`.
+
+## 3) اتصال سایت
+
+در `index.html` مقدار `SHOP_API` را به آدرس Worker فروشگاه تغییر بده:
+
+```js
+const SHOP_API = "https://YOUR-SHOP-WORKER.workers.dev";
+```
+
+سپس `index.html` را در مخزن GitHub Pages جایگزین کن. قیمت‌های واقعی را در `PRODUCTS` داخل Worker تنظیم و دوباره Deploy کن.
+
+## 4) پلاگین Paper
+
+پلاگین قبلی این بسته برای تحویل سفارش‌های تأییدشده قابل استفاده است. از پوشه `paper-plugin` با Java 21 و Maven اجرا کن:
+
+```bat
+mvn clean package
+```
+
+خروجی `target/hoylott-shop-1.0.0.jar` را در پوشه `plugins` سرور بگذار. فایل `plugins/HOYLOTTShop/config.yml` را تنظیم کن:
+
+```yaml
+api-url: "https://YOUR-SHOP-WORKER.workers.dev"
+delivery-token: "همان DELIVERY_TOKEN در Cloudflare"
+poll-seconds: 10
+commands:
+  vip: "lp user {player} parent addtemp vip 30d"
+  money: "eco give {player} {amount}"
+```
+
+سرور را کامل Restart کن. گروه `vip` باید در LuckPerms وجود داشته باشد و دستور `eco give` با پلاگین اقتصاد تو کار کند.
+
+## 5) تأیید سفارش پس از بررسی واقعی واریز
+
+پس از ارسال رسید، ایمیلی شامل شناسه سفارش، نام کاربری، محصول، مبلغ و فایل رسید دریافت می‌کنی. ابتدا در حساب بانکی خودت تأیید کن که مبلغ درست واقعاً واریز شده است. سپس از PowerShell یا ترمینال خودت این درخواست را بفرست؛ توکن را داخل سایت یا چت عمومی قرار نده:
+
+```powershell
+$API = "https://YOUR-SHOP-WORKER.workers.dev"
+$TOKEN = "ADMIN_TOKEN_SECRET_VALUE"
+$ORDER = "ORDER_UUID_FROM_EMAIL"
+Invoke-RestMethod -Method Post -Uri "$API/api/admin/approve" -Headers @{ Authorization = "Bearer $TOKEN"; "Content-Type" = "application/json" } -Body (@{ orderId = $ORDER } | ConvertTo-Json)
+```
+
+اگر خروجی `ok: true` بود، سفارش وارد صف تحویل خودکار می‌شود. `ADMIN_TOKEN` را در PowerShell خودت وارد کن؛ در HTML عمومی قرار نده.
+
+## وضعیت سفارش‌ها
+- `awaiting_receipt`: سفارش ایجاد شده و منتظر رسید است.
+- `receipt_submitted`: رسید ایمیل شده؛ منتظر بررسی دستی مدیر.
+- `paid`: مدیر پس از بررسی بانکی سفارش را تأیید کرده است؛ در صف تحویل.
+- `processing`: پلاگین سفارش را گرفته است.
+- `done`: پلاگین دستور تحویل را اجرا کرده است.
+- `manual`: نیازمند بررسی دستی است.
+
+## آزمایش قبل از انتشار
+1. ابتدا یک محصول آزمایشی با قیمت پایین تنظیم کن.
+2. یک سفارش آزمایشی بساز و رسید تستی ارسال کن؛ مطمئن شو ایمیل و پیوست می‌رسند.
+3. سفارش را در حالی که پول واقعاً واریز نشده approve نکن.
+4. فقط پس از تأیید واقعی تراکنش، endpoint تأیید مدیر را آزمایش کن و بررسی کن رنک/پول یک‌بار تحویل شود.
