@@ -5,101 +5,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HOYLOTT | سرور ماینکرفت</title>
+  <meta name="description" content="فروشگاه و اخبار سرور ماینکرفت HOYLOTT">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <a class="logo" href="#">HOYLOTT<span>MC</span></a>
+  <header class="topbar">
+    <a class="brand" href="index.html">💎 HOYLOTT</a>
     <nav>
-      <a href="#home">خانه</a>
       <a href="#shop">فروشگاه</a>
+      <a href="#news">اخبار</a>
       <a href="#support">پشتیبانی</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <p class="tag">دنیای خودت رو بساز</p>
-      <h1>به دنیای <span>HOYLOTT</span> خوش اومدی!</h1>
-      <p>ماجراجویی کن، بساز، رقابت کن و با دوستات وارد دنیای ماینکرفت شو.</p>
-      <a class="button" href="#shop">مشاهده قیمت‌ها</a>
-    </section>
-
-    <section class="section">
-      <h2>چرا HOYLOTT؟</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>⛏️ ماجراجویی</h3>
-          <p>دنیای ماینکرفت رو کشف کن و سازه‌های خودت رو بساز.</p>
-        </article>
-        <article class="card">
-          <h3>⚔️ رقابت</h3>
-          <p>با دوستانت بازی کن و مهارتت رو نشون بده.</p>
-        </article>
-        <article class="card">
-          <h3>💎 امکانات ویژه</h3>
-          <p>با خرید رتبه و سکه از سرورت حمایت کن.</p>
-        </article>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">MINECRAFT • SURVIVAL</span>
+        <h1 id="hero-title">به دنیای HOYLOTT خوش اومدی!</h1>
+        <p id="hero-description">ماجراجویی کن، پیشرفت کن و با دوستات بازی کن.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#shop">مشاهده فروشگاه</a>
+          <button class="btn secondary" id="copy-address" type="button">
+            کپی آدرس سرور
+          </button>
+        </div>
+        <p class="server-address" id="server-address">185.112.151.46:27167</p>
+        <p id="copy-status" class="muted" aria-live="polite"></p>
       </div>
     </section>
 
     <section class="section" id="shop">
-      <h2>فروشگاه HOYLOTT</h2>
-      <p class="muted">قیمت محصولات؛ ثبت سفارش از طریق پشتیبانی انجام می‌شود.</p>
-      <div class="cards">
-        <article class="card product">
-          <div class="emoji">👑</div>
+      <div class="section-heading">
+        <span class="eyebrow">HOYLOTT STORE</span>
+        <h2>فروشگاه سرور</h2>
+        <p>قیمت‌ها رو ببین و برای ثبت سفارش با پشتیبانی تماس بگیر.</p>
+      </div>
+      <div class="cards" id="shop-items">
+        <article class="item-card">
+          <div class="item-icon">👑</div>
           <h3>VIP سی‌روزه</h3>
-          <p>رتبه ویژه به مدت ۳۰ روز</p>
-          <div class="price">۱۱۰٬۰۰۰ تومان</div>
+          <p class="price">۱۱۰٬۰۰۰ تومان</p>
         </article>
-
-        <article class="card product">
-          <div class="emoji">🪙</div>
+        <article class="item-card">
+          <div class="item-icon">🪙</div>
           <h3>۱۰٬۰۰۰ سکه</h3>
-          <p>بسته سکه سرور</p>
-          <div class="price">۲۰٬۰۰۰ تومان</div>
+          <p class="price">۲۰٬۰۰۰ تومان</p>
         </article>
-
-        <article class="card product">
-          <div class="emoji">💰</div>
+        <article class="item-card">
+          <div class="item-icon">💰</div>
           <h3>۳۰٬۰۰۰ سکه</h3>
-          <p>بسته سکه سرور</p>
-          <div class="price">۶۰٬۰۰۰ تومان</div>
+          <p class="price">۶۰٬۰۰۰ تومان</p>
         </article>
       </div>
-      <p class="notice">برای سفارش، نام محصول و آیدی داخل بازی را برای پشتیبانی ارسال کن.</p>
+      <p class="shop-note">برای ثبت سفارش: <a href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">پشتیبانی روبیکا</a> — آیدی سفارش: <strong>@Saleh574</strong></p>
     </section>
 
-    <section class="section" id="support">
-      <h2>پشتیبانی HOYLOTT</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>✉️ ایمیل مستقیم</h3>
-          <p>برای گزارش مشکل یا ارسال درخواست با ما تماس بگیر.</p>
-          <a class="button" href="mailto:salehamini214@gmail.com?subject=HOYLOTT%20Support">ارسال ایمیل</a>
-          <p class="muted">salehamini214@gmail.com</p>
-        </article>
+    <section class="section news-section" id="news">
+      <div class="section-heading">
+        <span class="eyebrow">LATEST UPDATES</span>
+        <h2>اخبار و اطلاعیه‌ها</h2>
+        <p>جدیدترین خبرهای HOYLOTT</p>
+      </div>
+      <div class="cards" id="news-items">
+        <p class="empty-state">هنوز خبری منتشر نشده است.</p>
+      </div>
+    </section>
 
-        <article class="card">
-          <h3>💬 پشتیبانی روبیکا</h3>
-          <p>برای پرسش و پیگیری سفارش.</p>
-          <a class="button" href="https://rubika.ir/hoylottmc"
-             target="_blank" rel="noopener">ورود به روبیکا</a>
-        </article>
-
-        <article class="card">
-          <h3>🛒 ثبت سفارش</h3>
-          <p>شناسه سفارش در روبیکا</p>
-          <strong dir="ltr">@Saleh574</strong>
-          <p class="muted">کارت‌های فروشگاه فقط قیمت را نمایش می‌دهند.</p>
-        </article>
+    <section class="section support-section" id="support">
+      <div class="support-panel">
+        <div>
+          <span class="eyebrow">WE'RE HERE TO HELP</span>
+          <h2>پشتیبانی HOYLOTT</h2>
+          <p>برای سفارش، سؤال یا گزارش مشکل با ما در ارتباط باش.</p>
+        </div>
+        <div class="support-actions">
+          <a class="btn primary" href="mailto:salehamini214@gmail.com">ارسال ایمیل</a>
+          <a class="btn secondary" href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">ورود به روبیکا</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © HOYLOTT — تمام حقوق محفوظ است.
+    <p>© <span id="year"></span> HOYLOTT — ساخته‌شده برای جامعه ماینکرفت</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
 </body>
 </html>
