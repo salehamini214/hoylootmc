@@ -1,53 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0f19">
-<title>HOYLOTT | سرور ماینکرفت</title>
-<style>
-:root{--bg:#0b0f19;--panel:#151d2e;--gold:#facc15;--green:#34d399;--muted:#aab4c8;--line:#343344}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:var(--bg);color:#f8fafc;font-family:Tahoma,Arial,sans-serif;line-height:1.9}a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer}.wrap{width:min(1100px,92%);margin:auto}header{position:sticky;top:0;z-index:10;background:#0b0f19f5;border-bottom:1px solid var(--line)}nav{min-height:75px;display:flex;justify-content:space-between;align-items:center;gap:15px}.logo{font-size:25px;font-weight:900;color:var(--gold);letter-spacing:1px}.links{display:flex;align-items:center;gap:20px}.links a:hover{color:var(--gold)}.btn{border:0;border-radius:12px;padding:12px 20px;background:var(--gold);color:#151515;font-weight:900;transition:.2s}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.menu{display:none}.hero{text-align:center;padding:95px 0 65px;background:radial-gradient(ellipse at top,#453714 0%,#151725 38%,var(--bg) 75%)}.pill{display:inline-block;border:1px solid #80691c;border-radius:30px;padding:5px 15px;color:var(--gold);background:#facc1510}h1{font-size:clamp(38px,7vw,72px);line-height:1.3;margin:25px 0 10px}.gold{color:var(--gold)}.subtitle{font-size:clamp(19px,3vw,27px);font-weight:bold}.desc{color:var(--muted);max-width:700px;margin:15px auto}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 45px}.secondary{background:#202b40;color:white;border:1px solid #39445a}.stats,.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.stat,.card,.news,.connect,.faq,.product{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.stat{text-align:right}.stat small{display:block;color:var(--muted)}.stat strong{font-size:18px}section{padding:75px 0}.alt{background:#11182780}.heading{text-align:center;margin:0 auto 35px;max-width:700px}.heading h2{font-size:clamp(27px,4vw,39px);margin:0 0 10px}.heading p,.card p,.news p,.product p{color:var(--muted)}.card{padding:27px;transition:.2s}.card:hover,.news:hover,.product:hover{border-color:#b99a27;transform:translateY(-4px)}.icon{font-size:35px}.card h3,.news h3{margin:7px 0}.news{padding:0;overflow:hidden}.newsbar{height:8px;background:linear-gradient(90deg,#facc15,#34d399,#8b5cf6)}.newsbody{padding:23px}.date{color:var(--gold);font-size:13px}.connect{text-align:center;padding:35px}.iprow{display:flex;gap:10px;max-width:520px;margin:25px auto 10px}input,select{min-width:0;background:var(--bg);color:#f8fafc;border:1px solid #4b5563;border-radius:12px;padding:13px;font:inherit;width:100%}input{text-align:center}#feedback,.notice{color:var(--green);min-height:30px}.faq{padding:0;margin:12px auto;max-width:800px}.question{display:block;width:100%;text-align:right;color:white;background:none;border:0;padding:18px;font-weight:bold}.answer{padding:0 18px 18px;color:var(--muted)}.answer[hidden]{display:none}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}footer .wrap{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.product{transition:.2s;display:flex;flex-direction:column;gap:8px}.product .emoji{font-size:42px}.product h3{margin:0}.price{color:var(--gold);font-size:23px;font-weight:900}.product .btn{margin-top:auto}.buyform{max-width:650px;margin:30px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}.field{margin:12px 0;text-align:right}.field label{display:block;margin-bottom:6px;color:#e5e7eb}.hint{font-size:13px;color:var(--muted)}.notice{background:#0c2b26;border:1px solid #176b54;padding:12px 16px;border-radius:12px;margin:15px auto;max-width:800px;display:none}.notice.error{background:#35191e;border-color:#8b303b;color:#fecaca}.notice.show{display:block}.payment-status{max-width:800px;margin:0 auto 20px}.store-grid{display:grid;grid-template-columns:1fr;gap:20px}
-@media(max-width:760px){.links{display:none;position:absolute;top:75px;left:0;right:0;background:#111827;padding:20px;flex-direction:column}.links.open{display:flex}.menu{display:block;background:transparent;color:var(--gold);border:1px solid #55491c;border-radius:9px;padding:7px 12px}.navbtn{display:none}.grid,.stats,.products{grid-template-columns:1fr}.hero{padding-top:65px}section{padding:55px 0}.iprow{flex-direction:column}.buyform{padding:18px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HOYLOTT | سرور ماینکرفت</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><nav class="wrap"><a class="logo" href="#home">⬡ HOYLOTT</a><div class="links" id="links"><a href="#home">خانه</a><a href="#features">ویژگی‌ها</a><a href="#news">اخبار</a><a href="#store">فروشگاه</a><a href="#community">روبیکا</a><a href="#support">پشتیبانی</a><a href="#server">اتصال به سرور</a><a href="#faq">راهنما</a><button class="btn" onclick="copyIP()">کپی IP</button></div><button class="menu" id="menu" aria-label="منو">☰</button><button class="btn navbtn" onclick="copyIP()">ورود به سرور</button></nav></header>
-<main>
-<section class="hero" id="home"><div class="wrap"><span class="pill">⛏️ سرور ماینکرفت HOYLOTT</span><h1>به دنیای <span class="gold">HOYLOTT</span><br>خوش آمدی!</h1><div class="subtitle">یک دنیای جدید، یک ماجراجویی بی‌پایان</div><p class="desc">منابع جمع کن، خانه و قلعه بساز، با دوستانت بازی کن و داستان خودت را در دنیای Survival بساز!</p><div class="actions"><button class="btn" onclick="copyIP()">🎮 کپی آدرس و ورود</button><a class="btn secondary" href="#store">🛒 فروشگاه سرور</a><a class="btn secondary" href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">💬 کانال روبیکا</a></div><div class="stats"><div class="stat">🌲 <small>حالت بازی</small><strong>Survival</strong></div><div class="stat">🧱 <small>نسخه اعلام‌شده</small><strong>1.21.11</strong></div><div class="stat">🌐 <small>آدرس سرور</small><strong>ominous-goat.spwn.ir</strong></div></div></div></section>
-<section class="alt" id="features"><div class="wrap"><div class="heading"><h2>ویژگی‌های <span class="gold">HOYLOTT</span></h2><p>دنیای خودت را بساز و ماجراجویی را شروع کن!</p></div><div class="grid"><article class="card"><div class="icon">🌲</div><h3>بقای واقعی</h3><p>منابع جمع‌آوری کن، تجهیزات بساز و برای زنده ماندن تلاش کن.</p></article><article class="card"><div class="icon">🏰</div><h3>ساخت شهر و قلعه</h3><p>خانه، شهر و قلعه بساز و قلمرو خودت را گسترش بده.</p></article><article class="card"><div class="icon">🤝</div><h3>بازی با دوستان</h3><p>دوستانت را دعوت کن و با هم ماجراجویی کنید.</p></article></div></div></section>
-<section id="news"><div class="wrap"><div class="heading"><h2>اخبار و اطلاعیه‌ها</h2><p>آخرین خبرهای رسمی سرور را اینجا بخوان.</p></div><div class="grid" id="newsContainer"></div></div></section>
-<section class="alt" id="store"><div class="wrap"><div class="heading"><h2>فروشگاه <span class="gold">HOYLOTT</span></h2><p>محصولت را انتخاب کن و برای ثبت سفارش، مستقیم به آیدی <bdi dir="ltr">@Saleh574</bdi> در روبیکا پیام بده. قیمت‌ها همین‌جا مشخص‌اند؛ پرداخت فقط پس از هماهنگی انجام می‌شود.</p></div><div id="paymentNotice" class="notice payment-status" role="status" aria-live="polite"></div><div id="storeNotice" class="notice" role="status" aria-live="polite"></div><div class="products" id="productsContainer"><article class="product"><div class="emoji">👑</div><h3>رنک VIP — 30 روز</h3><p>پیشوند VIP و امکانات گروه VIP سرور.</p><div class="price">قیمت در حال بارگذاری…</div><button class="btn" disabled>خرید VIP</button></article><article class="product"><div class="emoji">💰</div><h3>10,000 پول بازی</h3><p>افزایش موجودی اقتصاد داخل سرور.</p><div class="price">قیمت در حال بارگذاری…</div><button class="btn" disabled>خرید پول</button></article><article class="product"><div class="emoji">💎</div><h3>30,000 پول بازی</h3><p>بسته بزرگ‌تر پول داخل سرور.</p><div class="price">قیمت در حال بارگذاری…</div><button class="btn" disabled>خرید پول</button></article></div><div class="buyform"><h3>🛡️ ثبت سفارش</h3><p class="hint">نام کاربری را دقیق وارد کن و محصول را انتخاب کن؛ با زدن دکمه، پیام سفارش آماده می‌شود و صفحه روبیکا باز خواهد شد. رمز عبورت را هیچ‌وقت نفرست.</p><div class="field"><label for="mcUsername">نام کاربری Minecraft</label><input id="mcUsername" maxlength="16" autocomplete="off" placeholder="مثلاً Steve123" pattern="[A-Za-z0-9_]{3,16}"></div><div class="field"><label for="productSelect">محصول</label><select id="productSelect"><option value="vip30">رنک VIP — 30 روز | 110,000 تومان</option><option value="coins10k">10,000 سکه | 20,000 تومان</option><option value="coins30k">30,000 سکه | 60,000 تومان</option></select></div><button class="btn" id="checkoutButton" onclick="checkout()" style="width:100%">💬 ادامه سفارش در روبیکا</button><p class="hint">سفارش پس از هماهنگی با پشتیبانی نهایی می‌شود.</p></div></div></div></section>
-<section class="alt" id="community"><div class="wrap"><div class="connect"><div class="icon">💬</div><h2>به جامعه <span class="gold">HOYLOTT</span> بپیوند!</h2><p class="desc">خبرها و اطلاعیه‌های سرور را در کانال رسمی روبیکا دنبال کن.</p><a class="btn" href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">باز کردن کانال روبیکا ↗</a></div></div></section>
-<section id="support"><div class="wrap"><div class="heading"><h2>پشتیبانی <span class="gold">HOYLOTT</span></h2><p>برای خرید، مشکل ورود یا هر سؤال دیگری مستقیم با مدیر در ارتباط باش.</p></div><div class="grid"><article class="card"><div class="icon">✉️</div><h3>ایمیل مستقیم</h3><p>برای ارسال ایمیل، دکمه زیر را بزن. آدرس ایمیل مدیر باید در سایت تنظیم شود.</p><a class="btn secondary" href="mailto:YOUR_EMAIL_HERE?subject=HOYLOTT%20Support">ارسال ایمیل</a></article><article class="card"><div class="icon">💬</div><h3>ثبت سفارش در روبیکا</h3><p>برای سفارش VIP یا سکه به آیدی مدیر پیام بده.</p><a class="btn" href="https://rubika.ir/Saleh574" target="_blank" rel="noopener">پیام به @Saleh574 ↗</a></article><article class="card"><div class="icon">📣</div><h3>کانال رسمی</h3><p>اخبار و اطلاعیه‌های HOYLOTT را دنبال کن.</p><a class="btn secondary" href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">رفتن به کانال ↗</a></article></div></div></section>
-<section id="server"><div class="wrap"><div class="connect"><h2>آماده‌ای وارد <span class="gold">HOYLOTT</span> شوی؟</h2><p class="desc">آدرس را کپی کن و در بخش Multiplayer بازی وارد کن.</p><div class="iprow"><input id="serverIP" value="ominous-goat.spwn.ir" readonly aria-label="آدرس سرور"><button class="btn" onclick="copyIP()">📋 کپی آدرس</button></div><div id="feedback" role="status" aria-live="polite"></div></div></div></section>
-<section id="faq"><div class="wrap"><div class="heading"><h2>راهنمای اتصال</h2><p>سریع وارد بازی شو.</p></div><div class="faq"><button class="question" aria-expanded="false">چطور به سرور وصل شوم؟　＋</button><div class="answer" hidden>ماینکرفت Java را باز کن، وارد Multiplayer شو، Add Server را بزن و آدرس ominous-goat.spwn.ir را وارد کن.</div></div><div class="faq"><button class="question" aria-expanded="false">چه نسخه‌ای لازم است؟　＋</button><div class="answer" hidden>نسخه اعلام‌شده در سایت 1.21.11 است. اگر خطای اتصال دیدی، نسخه واقعی سرور را بررسی کن.</div></div><div class="faq"><button class="question" aria-expanded="false">بعد از پرداخت، خرید چطور تحویل می‌شود؟　＋</button><div class="answer" hidden>پس از واریز، رسید را از فروشگاه ارسال کن. مدیر واریز را در حساب بانکی بررسی می‌کند و بعد از تأیید، پلاگین رنک یا پول را خودکار تحویل می‌دهد.</div></div><div class="faq"><button class="question" aria-expanded="false">چطور به پشتیبانی پیام بدهیم؟　＋</button><div class="answer" hidden>از بخش پشتیبانی سایت، مستقیم به آیدی @Saleh574 در روبیکا پیام بده یا از ایمیل استفاده کن.</div></div></div></section>
-</main>
-<footer><div class="wrap"><span>پشتیبانی: <a href="https://rubika.ir/Saleh574" target="_blank" rel="noopener">@Saleh574</a></span><a href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">کانال روبیکا</a><a class="logo" href="#home">HOYLOTT</a><span>© ۲۰۲۶ — سرور ماینکرفت HOYLOTT</span><a href="#home">بازگشت به بالا ↑</a></div></footer>
-<script>
-// بعد از Deploy کردن Worker فروشگاه، URL واقعی آن را اینجا بگذار.
-const SHOP_API = ""; // سفارش‌ها مستقیماً از طریق روبیکا انجام می‌شوند.
-const newsData = [];
-const fallbackProducts = [
- {id:"vip30",name:"رنک VIP — 30 روز",priceToman:110000,emoji:"👑",description:"پیشوند VIP و امکانات گروه VIP سرور."},
- {id:"coins10k",name:"10,000 سکه",priceToman:20000,emoji:"💰",description:"افزایش موجودی اقتصاد داخل سرور."},
- {id:"coins30k",name:"30,000 سکه",priceToman:60000,emoji:"💎",description:"بسته بزرگ‌تر پول داخل سرور."}
-];
-let products = fallbackProducts;
-const toman = n => new Intl.NumberFormat('fa-IR').format(n) + ' تومان';
-function renderNews(){const c=document.getElementById('newsContainer');if(!newsData.length){c.innerHTML='<article class="news"><div class="newsbar"></div><div class="newsbody"><div class="date">📢 اطلاعیه</div><h3>به‌زودی خبرهای جدید</h3><p>هنوز خبری منتشر نشده؛ اطلاعیه‌های بعدی اینجا قرار می‌گیرند.</p></div></article>';return;}newsData.forEach(item=>{const a=document.createElement('article');a.className='news';a.innerHTML='<div class="newsbar"></div>';const b=document.createElement('div');b.className='newsbody';const d=document.createElement('div');d.className='date';d.textContent=(item.category||'خبر')+' '+(item.date||'');const h=document.createElement('h3');h.textContent=item.title||'خبر سرور';const p=document.createElement('p');p.textContent=item.description||'';b.append(d,h,p);a.append(b);c.append(a);});}
-function renderProducts(){const c=document.getElementById('productsContainer');c.replaceChildren();products.forEach(p=>{const a=document.createElement('article');a.className='product';const emoji=document.createElement('div');emoji.className='emoji';emoji.textContent=p.emoji||(p.id==='vip30'?'👑':p.id==='coins10k'?'💰':'💎');const h=document.createElement('h3');h.textContent=p.name;const desc=document.createElement('p');desc.textContent=p.description||(p.id==='vip30'?'پیشوند VIP و امکانات گروه VIP سرور.':'سکه قابل استفاده در سرور.');const price=document.createElement('div');price.className='price';price.textContent=toman(p.priceToman);const btn=document.createElement('button');btn.className='btn';btn.textContent='انتخاب این محصول';btn.addEventListener('click',()=>{document.getElementById('productSelect').value=p.id;document.getElementById('mcUsername').focus();document.querySelector('.buyform').scrollIntoView({behavior:'smooth',block:'center'});});a.append(emoji,h,desc,price,btn);c.append(a);});}
-function notice(id,msg,error=false){const el=document.getElementById(id);el.textContent=msg;el.classList.add('show');el.classList.toggle('error',error);}
-async function loadProducts(){if(!SHOP_API){renderProducts();return;}try{const r=await fetch(SHOP_API+'/api/products',{headers:{'Accept':'application/json'}});if(!r.ok)throw Error('API '+r.status);const d=await r.json();if(!Array.isArray(d.products)||!d.products.length)throw Error('products');products=d.products.map(p=>({...p,emoji:p.id==='vip30'?'👑':p.id==='coins10k'?'💰':'💎'}));renderProducts();document.getElementById('storeNotice').classList.remove('show');}catch(e){notice('storeNotice','اتصال به فروشگاه برقرار نشد. تنظیمات API را بررسی کن.',true);renderProducts();}}
-function checkout(){
- const username=document.getElementById('mcUsername').value.trim();
- const id=document.getElementById('productSelect').value;
- const p=products.find(x=>x.id===id)||fallbackProducts.find(x=>x.id===id);
- if(!/^[A-Za-z0-9_]{3,16}$/.test(username)){notice('storeNotice','نام کاربری معتبر Minecraft (۳ تا ۱۶ حرف انگلیسی، عدد یا _) وارد کن.',true);document.getElementById('mcUsername').focus();return;}
- const message=`سلام! می‌خواهم از فروشگاه HOYLOTT سفارش بدهم.\nمحصول: ${p.name}\nقیمت: ${toman(p.priceToman)}\nنام کاربری Minecraft: ${username}`;
- const url='https://rubika.ir/Saleh574';
- notice('storeNotice','پیام سفارش آماده است. در روبیکا به @Saleh574 پیام بده و این اطلاعات را ارسال کن: '+message.replace(/\n/g,' | '),false);
- window.open(url,'_blank','noopener');
-}
-async function copyIP(){const ip='ominous-goat.spwn.ir';const feedback=document.getElementById('feedback');try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(ip);else{const el=document.createElement('textarea');el.value=ip;el.style.position='fixed';el.style.opacity='0';document.body.appendChild(el);el.select();const ok=document.execCommand('copy');el.remove();if(!ok)throw Error('copy');}feedback.textContent='✅ آدرس کپی شد: '+ip;}catch(e){const input=document.getElementById('serverIP');input.focus();input.select();feedback.textContent='آدرس انتخاب شد؛ Ctrl+C را بزن: '+ip;}}
-document.getElementById('menu').addEventListener('click',()=>document.getElementById('links').classList.toggle('open'));document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));document.querySelectorAll('.question').forEach(b=>b.addEventListener('click',()=>{const a=b.nextElementSibling;const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));a.hidden=open;}));
-renderNews();loadProducts();
-</script>
-</body></html>
+  <header class="navbar">
+    <a class="logo" href="#">HOYLOTT<span>MC</span></a>
+    <nav>
+      <a href="#home">خانه</a>
+      <a href="#shop">فروشگاه</a>
+      <a href="#support">پشتیبانی</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <p class="tag">دنیای خودت رو بساز</p>
+      <h1>به دنیای <span>HOYLOTT</span> خوش اومدی!</h1>
+      <p>ماجراجویی کن، بساز، رقابت کن و با دوستات وارد دنیای ماینکرفت شو.</p>
+      <a class="button" href="#shop">مشاهده قیمت‌ها</a>
+    </section>
+
+    <section class="section">
+      <h2>چرا HOYLOTT؟</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>⛏️ ماجراجویی</h3>
+          <p>دنیای ماینکرفت رو کشف کن و سازه‌های خودت رو بساز.</p>
+        </article>
+        <article class="card">
+          <h3>⚔️ رقابت</h3>
+          <p>با دوستانت بازی کن و مهارتت رو نشون بده.</p>
+        </article>
+        <article class="card">
+          <h3>💎 امکانات ویژه</h3>
+          <p>با خرید رتبه و سکه از سرورت حمایت کن.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <h2>فروشگاه HOYLOTT</h2>
+      <p class="muted">قیمت محصولات؛ ثبت سفارش از طریق پشتیبانی انجام می‌شود.</p>
+      <div class="cards">
+        <article class="card product">
+          <div class="emoji">👑</div>
+          <h3>VIP سی‌روزه</h3>
+          <p>رتبه ویژه به مدت ۳۰ روز</p>
+          <div class="price">۱۱۰٬۰۰۰ تومان</div>
+        </article>
+
+        <article class="card product">
+          <div class="emoji">🪙</div>
+          <h3>۱۰٬۰۰۰ سکه</h3>
+          <p>بسته سکه سرور</p>
+          <div class="price">۲۰٬۰۰۰ تومان</div>
+        </article>
+
+        <article class="card product">
+          <div class="emoji">💰</div>
+          <h3>۳۰٬۰۰۰ سکه</h3>
+          <p>بسته سکه سرور</p>
+          <div class="price">۶۰٬۰۰۰ تومان</div>
+        </article>
+      </div>
+      <p class="notice">برای سفارش، نام محصول و آیدی داخل بازی را برای پشتیبانی ارسال کن.</p>
+    </section>
+
+    <section class="section" id="support">
+      <h2>پشتیبانی HOYLOTT</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>✉️ ایمیل مستقیم</h3>
+          <p>برای گزارش مشکل یا ارسال درخواست با ما تماس بگیر.</p>
+          <a class="button" href="mailto:salehamini214@gmail.com?subject=HOYLOTT%20Support">ارسال ایمیل</a>
+          <p class="muted">salehamini214@gmail.com</p>
+        </article>
+
+        <article class="card">
+          <h3>💬 پشتیبانی روبیکا</h3>
+          <p>برای پرسش و پیگیری سفارش.</p>
+          <a class="button" href="https://rubika.ir/hoylottmc"
+             target="_blank" rel="noopener">ورود به روبیکا</a>
+        </article>
+
+        <article class="card">
+          <h3>🛒 ثبت سفارش</h3>
+          <p>شناسه سفارش در روبیکا</p>
+          <strong dir="ltr">@Saleh574</strong>
+          <p class="muted">کارت‌های فروشگاه فقط قیمت را نمایش می‌دهند.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © HOYLOTT — تمام حقوق محفوظ است.
+  </footer>
+</body>
+</html>
