@@ -1,7 +1,93 @@
-<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>پنل مدیریت HOYLOTT</title><style>body{margin:0;background:#0b0f19;color:#f8fafc;font:15px Tahoma,Arial;line-height:1.8}.wrap{max-width:1100px;margin:auto;padding:22px}h1{color:#facc15}input,button{font:inherit;padding:10px;border-radius:9px;border:1px solid #475569}input{background:#111827;color:white;min-width:220px}button{cursor:pointer;background:#facc15;color:#111;font-weight:bold;margin:3px}.danger{background:#ef4444;color:white}.muted{color:#aab4c8}.order{background:#151d2e;border:1px solid #343b4c;border-radius:14px;padding:16px;margin:14px 0}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.receipt{max-width:100%;max-height:70vh;display:block;margin:12px 0}.status{color:#facc15}.notice{padding:10px;margin:10px 0;background:#1e293b;border-radius:8px;white-space:pre-wrap}</style><div class="wrap"><h1>⬡ HOYLOTT — پنل مدیریت سفارش‌ها</h1><p class="muted">توکن مدیر فقط در همین صفحه وارد می‌شود. آن را داخل سایت عمومی یا فایل index.html قرار نده.</p><div class="row"><input id="api" value="https://hoylott-shop.salehamini214.workers.dev" aria-label="آدرس API"><input id="token" type="password" placeholder="ADMIN_TOKEN را وارد کن" autocomplete="off"><button id="load">بارگذاری سفارش‌ها</button></div><div id="msg" class="notice">برای شروع، توکن مدیر را وارد کن.</div><div id="orders"></div></div><script>
-const $=id=>document.getElementById(id);function note(s){$('msg').textContent=s}function headers(){return {'Authorization':'Bearer '+$('token').value.trim(),'Content-Type':'application/json'}}
-async function api(path,opts={}){const r=await fetch($('api').value.replace(/\/$/, '')+path,{...opts,headers:{...headers(),...(opts.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.message||d.error||('HTTP '+r.status));return d}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function load(){if(!$('token').value.trim()){note('توکن مدیر را وارد کن.');return}note('در حال دریافت سفارش‌ها…');try{const d=await api('/api/admin/orders');$('orders').innerHTML=(d.orders||[]).map(o=>`<article class="order"><b>سفارش:</b> ${esc(o.id)}<br><b>ماینکرفت:</b> ${esc(o.username)}<br><b>محصول:</b> ${esc(o.product_name)}<br><b>مبلغ:</b> ${Number(o.amount_toman).toLocaleString('en-US')} تومان<br><b>وضعیت:</b> <span class="status">${esc(o.status)}</span><br><b>رسید:</b> ${esc(o.receipt_filename||'ارسال نشده')}<div class="row">${o.receipt_mime?`<button data-view="${esc(o.id)}">نمایش رسید</button>`:''}${o.status==='receipt_submitted'?`<button data-act="approve" data-id="${esc(o.id)}">تأیید پرداخت</button><button class="danger" data-act="reject" data-id="${esc(o.id)}">رد سفارش</button>`:''}</div><div id="receipt-${esc(o.id)}"></div></article>`).join('')||'<p>سفارشی ثبت نشده.</p>';note('سفارش‌ها بارگذاری شدند. رسیدها را بررسی کن؛ تأیید فقط بعد از بررسی تراکنش بانکی.');}catch(e){note('خطا: '+e.message)}}
-$('load').onclick=load;$('orders').onclick=async e=>{const v=e.target.dataset.view,a=e.target.dataset.act,id=e.target.dataset.id;if(v){try{const d=await api('/api/admin/receipt?id='+encodeURIComponent(v));const target=$('receipt-'+v);if(d.mime==='application/pdf'){target.innerHTML=`<a target="_blank" rel="noopener" href="data:application/pdf;base64,${d.data}">باز کردن PDF رسید</a>`}else{target.innerHTML=`<img class="receipt" alt="رسید پرداخت" src="data:${esc(d.mime)};base64,${d.data}">`} }catch(err){note('خطا در نمایش رسید: '+err.message)}}if(a){if(!confirm(a==='approve'?'پرداخت را در بانک بررسی کرده‌ای و مطمئنی می‌خواهی سفارش را تأیید کنی؟':'از رد این سفارش مطمئنی؟'))return;try{const d=await api('/api/admin/status',{method:'POST',body:JSON.stringify({orderId:id,action:a})});note(d.message||'انجام شد');await load()}catch(err){note('خطا: '+err.message)}}};
-</script></html>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مدیریت HOYLOTT</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.admin {
+  width: min(650px, 92%);
+  margin: 50px auto;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0 16px;
+  border-radius: 10px;
+  border: 1px solid #293b5b;
+  background: #0b1425;
+  color: white;
+  font: inherit;
+}
+label { display: block; }
+</style>
+</head>
+<body>
+<div class="admin">
+  <h1>مدیریت سایت HOYLOTT</h1>
+
+  <section class="card" id="login">
+    <h2>ورود مدیر</h2>
+    <label for="password">رمز عبور</label>
+    <input id="password" type="password" placeholder="رمز مدیریت">
+    <button class="button" onclick="login()">ورود</button>
+    <p id="error"></p>
+  </section>
+
+  <section class="card" id="editor" hidden>
+    <h2>ویرایش قیمت‌ها</h2>
+
+    <label for="vip">قیمت VIP سی‌روزه</label>
+    <input id="vip" value="۱۱۰٬۰۰۰ تومان">
+
+    <label for="coin10">قیمت ۱۰٬۰۰۰ سکه</label>
+    <input id="coin10" value="۲۰٬۰۰۰ تومان">
+
+    <label for="coin30">قیمت ۳۰٬۰۰۰ سکه</label>
+    <input id="coin30" value="۶۰٬۰۰۰ تومان">
+
+    <button class="button" onclick="downloadPrices()">دانلود قیمت‌ها</button>
+    <p>فایل دانلودشده را برای به‌روزرسانی قیمت‌ها در سایت اعمال کن.</p>
+  </section>
+</div>
+
+<script>
+/*
+  نمونه محلی בלבד؛ این رمز امنیت واقعی ایجاد نمی‌کند.
+  برای سایت عمومی از احراز هویت سمت سرور استفاده کن.
+*/
+const ADMIN_PASSWORD = "@s05831396S";
+
+function login() {
+  if (document.getElementById("password").value === ADMIN_PASSWORD) {
+    document.getElementById("login").hidden = true;
+    document.getElementById("editor").hidden = false;
+  } else {
+    document.getElementById("error").textContent = "رمز اشتباه است.";
+  }
+}
+
+function downloadPrices() {
+  const prices = {
+    vip: document.getElementById("vip").value,
+    coin10: document.getElementById("coin10").value,
+    coin30: document.getElementById("coin30").value
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(prices, null, 2)],
+    { type: "application/json;charset=utf-8" }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "prices.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
