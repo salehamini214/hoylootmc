@@ -1,144 +1,360 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HOYLOTT Voice</title>
-<style>
-:root{color-scheme:dark;--bg:#0a1020;--panel:#121d33;--line:#293958;--text:#edf4ff;--muted:#a6b5cf;--blue:#4c8dff;--green:#45d6a0;--red:#ff6376}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#172b4c,#0a1020 55%);font-family:Tahoma,Arial,sans-serif;color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
-main{width:min(760px,100%)}header{text-align:center;margin-bottom:20px}header .logo{font-size:42px}h1{margin:8px 0;font-size:28px}p{color:var(--muted);line-height:1.8;margin:8px 0}.panel{background:rgba(18,29,51,.96);border:1px solid var(--line);border-radius:18px;padding:20px;margin:12px 0;box-shadow:0 15px 50px #0003}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}label{color:var(--muted);font-size:14px}input{width:100%;background:#091326;border:1px solid var(--line);border-radius:10px;padding:13px;color:var(--text);font:inherit;outline:none}input:focus{border-color:var(--blue)}button{font:inherit;border:0;border-radius:10px;padding:12px 14px;cursor:pointer;font-weight:bold;background:var(--blue);color:white}button.secondary{background:#243653}button.danger{background:#8b3042}button:disabled{opacity:.45;cursor:not-allowed}.notice{background:#1a2c48;border-radius:10px;padding:12px;color:#c9dcff;font-size:13px;line-height:1.8}.status{padding:10px;border-radius:10px;background:#091326;color:var(--muted);margin-top:12px;min-height:42px}.roomtop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.code{font-size:24px;font-weight:bold;letter-spacing:3px;color:var(--green);direction:ltr}.members{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.member{background:#203451;border:1px solid #344b70;border-radius:999px;padding:8px 12px;font-size:13px}.member.me{border-color:var(--green)}.controls{display:flex;gap:10px;flex-wrap:wrap}.controls button{flex:1;min-width:120px}.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}.footer{text-align:center;color:#8292af;font-size:12px;margin-top:14px}@media(max-width:560px){.grid{grid-template-columns:1fr}.panel{padding:15px}h1{font-size:24px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HOYLOTT Voice Chat</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #090d18;
+      color: #f4f7ff;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+    .app {
+      width: 100%;
+      max-width: 520px;
+      background: #121a2b;
+      border: 1px solid #293653;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 20px 70px #0008;
+    }
+    h1 { text-align: center; margin: 0; color: #67a5ff; }
+    .subtitle { text-align: center; color: #a9b7d0; margin: 10px 0 25px; }
+    label { display: block; margin: 14px 0 7px; }
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #34435f;
+      background: #0b1120;
+      color: white;
+      font-size: 16px;
+    }
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .primary { width: 100%; margin-top: 12px; background: #3478f6; color: white; }
+    .secondary { background: #263550; color: white; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    .status {
+      margin: 18px 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: #0b1120;
+      color: #b8c8e6;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .members { margin-top: 20px; }
+    .member {
+      background: #1b2740;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .controls { display: flex; gap: 10px; margin-top: 15px; }
+    .controls button { flex: 1; }
+    .hidden { display: none; }
+    .small { color: #9eacc5; font-size: 12px; line-height: 1.8; }
+  </style>
 </head>
 <body>
-<main>
-<header><div class="logo">ًںژ™ï¸ڈ</div><h1>HOYLOTT Voice</h1><p>ظˆغŒط³â€Œع†طھ ع¯ط±ظˆظ‡غŒ ط¯ط± ظ…ط±ظˆط±ع¯ط±ط› ط¨ط¯ظˆظ† ظ†طµط¨ ظ…ظˆط¯ ظ…ط§غŒظ†ع©ط±ظپطھ</p></header>
-<section id="lobby" class="panel">
-<div class="notice">ط¨ط±ط§غŒ طµط­ط¨طھطŒ ظ…ط±ظˆط±ع¯ط± ط¨ط§غŒط¯ ط§ط¬ط§ط²ظ‡ ط§ط³طھظپط§ط¯ظ‡ ط§ط² ظ…غŒع©ط±ظˆظپظˆظ† ط¯ط§ط´طھظ‡ ط¨ط§ط´ط¯. ط¨ط±ط§غŒ ط§ط³طھظپط§ط¯ظ‡ ط§ط² ط§غŒظ†طھط±ظ†طھطŒ ط³ط§غŒطھ ط¨ط§غŒط¯ ط±ظˆغŒ HTTPS ط¨ط§ط´ط¯. ط§غŒظ† ظ†ط³ط®ظ‡ ط¨ط±ط§غŒ ع¯ط±ظˆظ‡â€Œظ‡ط§غŒ ع©ظˆع†ع© طھط§ غ¸ ظ†ظپط± ط·ط±ط§ط­غŒ ط´ط¯ظ‡ ط§ط³طھ.</div>
-<div class="field"><label for="name">ط§ط³ظ… ظ†ظ…ط§غŒط´غŒ</label><input id="name" maxlength="24" placeholder="ظ…ط«ظ„ط§ظ‹ Steve" autocomplete="nickname"></div>
-<div class="grid">
-<div><button id="create" style="width:100%">ط³ط§ط®طھ ع¯ط±ظˆظ‡ ط¬ط¯غŒط¯</button></div>
-<div><div class="field" style="margin-top:0"><label for="roomCode">ع©ط¯ ع¯ط±ظˆظ‡</label><input id="roomCode" maxlength="6" placeholder="ظ…ط«ظ„ط§ظ‹ A7K2PQ" dir="ltr"></div><button id="join" style="width:100%">ظˆط±ظˆط¯ ط¨ظ‡ ع¯ط±ظˆظ‡</button></div>
-</div>
-<div id="lobbyStatus" class="status" role="status">ط§ط³ظ… ط¨ط²ظ† ظˆ ع¯ط±ظˆظ‡ ط¨ط³ط§ط² غŒط§ ط¨ط§ ع©ط¯ ظˆط§ط±ط¯ ط´ظˆ.</div>
-</section>
-<section id="room" class="panel hidden">
-<div class="roomtop"><div><div class="small">ع©ط¯ ط¯ط¹ظˆطھ ع¯ط±ظˆظ‡</div><div id="activeCode" class="code">------</div></div><button id="copyCode" class="secondary">ع©ظ¾غŒ ع©ط¯</button></div>
-<p>ط¨ط±ط§غŒ ط¯ط¹ظˆطھ ط¯ظˆط³طھط§ظ†طŒ ع©ط¯ ط¨ط§ظ„ط§ ط±ط§ ط¨ط±ط§غŒط´ط§ظ† ط¨ظپط±ط³طھ.</p>
-<div id="members" class="members"></div>
-<div class="controls"><button id="mute">ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†</button><button id="leave" class="danger">ط®ط±ظˆط¬ ط§ط² ع¯ط±ظˆظ‡</button></div>
-<div id="roomStatus" class="status" role="status">ط¯ط± ط­ط§ظ„ ط§طھطµط§ظ„...</div>
-<div id="audioContainer" class="hidden"></div>
-</section>
-<p class="footer">HOYLOTT â€¢ WebVoice preview</p>
-</main>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-(() => {
-  const socket = io();
-  const $ = id => document.getElementById(id);
-  let localStream = null, currentCode = null, selfId = null, muted = false;
-  const peers = new Map();
-  const config = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
+  <main class="app">
+    <h1>🎙 HOYLOTT</h1>
+    <p class="subtitle">چت صوتی گروهی بازیکنان ماینکرفت</p>
 
-  function status(text, room=false) { $(room ? "roomStatus" : "lobbyStatus").textContent = text; }
-  function showRoom(on) { $("lobby").classList.toggle("hidden", on); $("room").classList.toggle("hidden", !on); }
-  async function getMic() {
-    if (!window.isSecureContext && location.hostname !== "localhost") throw new Error("ط¨ط±ط§غŒ ظ…غŒع©ط±ظˆظپظˆظ† ط¨ط§غŒط¯ ط³ط§غŒطھ HTTPS ط¨ط§ط´ط¯.");
-    if (!navigator.mediaDevices?.getUserMedia) throw new Error("ط§غŒظ† ظ…ط±ظˆط±ع¯ط± ط¯ط³طھط±ط³غŒ ظ…غŒع©ط±ظˆظپظˆظ† ط±ط§ ظ¾ط´طھغŒط¨ط§ظ†غŒ ظ†ظ…غŒâ€Œع©ظ†ط¯.");
-    return navigator.mediaDevices.getUserMedia({ audio: { echoCancellation:true, noiseSuppression:true, autoGainControl:true }, video:false });
-  }
-  async function enter(mode) {
-    const name = $("name").value.trim();
-    if (!name) { status("ط§ظˆظ„ ط§ط³ظ… ظ†ظ…ط§غŒط´غŒâ€Œط§طھ ط±ط§ ظˆط§ط±ط¯ ع©ظ†."); $("name").focus(); return; }
-    $("create").disabled = $("join").disabled = true;
-    try {
-      status("ط¯ط± ط­ط§ظ„ ع¯ط±ظپطھظ† ط§ط¬ط§ط²ظ‡ ظ…غŒع©ط±ظˆظپظˆظ†...");
-      localStream = await getMic();
-      const result = await new Promise(resolve => {
-        if (mode === "create") socket.emit("create-room", {name}, resolve);
-        else socket.emit("join-room", {name, code:$("roomCode").value.trim().toUpperCase()}, resolve);
-      });
-      if (!result?.ok) { localStream.getTracks().forEach(t=>t.stop()); localStream=null; status(result?.error || "ظˆط±ظˆط¯ ط§ظ†ط¬ط§ظ… ظ†ط´ط¯."); return; }
-      currentCode = result.code; selfId = result.selfId;
-      $("activeCode").textContent = currentCode;
-      showRoom(true); renderMembers(result.members);
-      status("ظ…غŒع©ط±ظˆظپظˆظ† ط±ظˆط´ظ† ط§ط³طھط› ظ…ظ†طھط¸ط± ط§طھطµط§ظ„ طµط¯ط§...", true);
-      // Existing members initiate the offer after receiving peer-joined.
-    } catch (e) {
-      if (localStream) { localStream.getTracks().forEach(t=>t.stop()); localStream=null; }
-      status(e.message || "ط¯ط³طھط±ط³غŒ ط¨ظ‡ ظ…غŒع©ط±ظˆظپظˆظ† ظ…ظ…ع©ظ† ظ†ط´ط¯.");
-    } finally { $("create").disabled = $("join").disabled = false; }
-  }
-  function makePeer(id) {
-    if (peers.has(id)) return peers.get(id);
-    const pc = new RTCPeerConnection(config);
-    if (localStream) localStream.getTracks().forEach(t => pc.addTrack(t, localStream));
-    pc.onicecandidate = e => { if (e.candidate) socket.emit("signal", {to:id, candidate:e.candidate}); };
-    pc.ontrack = e => {
-      let audio = document.getElementById("audio-"+id);
-      if (!audio) { audio = document.createElement("audio"); audio.id="audio-"+id; audio.autoplay=true; audio.playsInline=true; $("audioContainer").appendChild(audio); }
-      audio.srcObject = e.streams[0];
-      audio.play().catch(()=>status("ط¨ط±ط§غŒ ط´ظ†غŒط¯ظ† طµط¯ط§طŒ غŒع© ط¨ط§ط± ط±ظˆغŒ طµظپط­ظ‡ ط¨ط²ظ† غŒط§ ظ¾ط®ط´ طµط¯ط§ ط±ط§ ظ…ط¬ط§ط² ع©ظ†.", true));
+    <section id="entry">
+      <label for="nickname">اسم شما</label>
+      <input id="nickname" maxlength="20" placeholder="مثلاً Saleh">
+
+      <label for="room">کد اتاق (برای ورود به گروه)</label>
+      <input id="room" maxlength="20" placeholder="کد گروه را وارد کن">
+
+      <button class="primary" id="join">ورود به گروه</button>
+      <button class="primary" id="create">ساخت گروه جدید</button>
+
+      <p class="small">
+        برای صحبت با دوستان، همه باید وارد همین صفحه شوند و کد یکسانی وارد کنند.
+        اجازه استفاده از میکروفون را به مرورگر بدهید.
+      </p>
+    </section>
+
+    <section id="chat" class="hidden">
+      <div class="status" id="status">در حال اتصال...</div>
+      <div><b>کد گروه:</b> <span id="roomCode"></span></div>
+
+      <div class="controls">
+        <button class="secondary" id="mute">🎙 قطع میکروفون</button>
+        <button class="secondary" id="leave">خروج از گروه</button>
+      </div>
+
+      <div class="members">
+        <b>اعضای گروه</b>
+        <div id="members"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+
+    let socket = null;
+    let localStream = null;
+    let roomCode = "";
+    let myId = "";
+    let muted = false;
+    let peers = {};
+    let memberNames = {};
+
+    const rtcConfig = {
+      iceServers: [
+        { urls: "stun:stun.l.google.com:19302" }
+      ]
     };
-    pc.onconnectionstatechange = () => {
-      if (pc.connectionState === "failed") status("ط§طھطµط§ظ„ طµط¯ط§ ط¨ط±ظ‚ط±ط§ط± ظ†ط´ط¯ط› ظ…ظ…ع©ظ† ط§ط³طھ ط´ط¨ع©ظ‡ ط¨ظ‡ TURN server ظ†غŒط§ط² ط¯ط§ط´طھظ‡ ط¨ط§ط´ط¯.", true);
+
+    function setStatus(text) {
+      $("status").textContent = text;
+    }
+
+    function makeRoomCode() {
+      return Math.random().toString(36).slice(2, 8).toUpperCase();
+    }
+
+    $("create").onclick = () => {
+      $("room").value = makeRoomCode();
+      joinRoom(true);
     };
-    peers.set(id, pc);
-    return pc;
-  }
-  async function makeOffer(id) {
-    try { const pc=makePeer(id); const offer=await pc.createOffer(); await pc.setLocalDescription(offer); socket.emit("signal",{to:id,description:pc.localDescription}); }
-    catch(e) { console.error(e); status("ط³ط§ط®طھ ط§طھطµط§ظ„ طµظˆطھغŒ ظ†ط§ظ…ظˆظپظ‚ ط¨ظˆط¯.", true); }
-  }
-  socket.on("peer-joined", ({id}) => { if (selfId && id !== selfId) makeOffer(id); });
-  socket.on("signal", async ({from,description,candidate}) => {
-    try {
-      const pc=makePeer(from);
-      if (description) {
-        await pc.setRemoteDescription(description);
-        if (description.type === "offer") {
-          const answer=await pc.createAnswer(); await pc.setLocalDescription(answer); socket.emit("signal",{to:from,description:pc.localDescription});
-        }
+
+    $("join").onclick = () => joinRoom(false);
+
+    async function joinRoom(createNew) {
+      const nickname = $("nickname").value.trim();
+      roomCode = $("room").value.trim().toUpperCase();
+
+      if (!nickname) {
+        alert("اول اسمت را وارد کن.");
+        return;
       }
-      if (candidate) await pc.addIceCandidate(candidate);
-    } catch(e) { console.error(e); }
-  });
-  socket.on("members", renderMembers);
-  socket.on("peer-left", ({id}) => {
-    const pc=peers.get(id); if (pc) pc.close(); peers.delete(id);
-    document.getElementById("audio-"+id)?.remove();
-  });
-  function renderMembers(list=[]) {
-    $("members").replaceChildren();
-    list.forEach(m => {
-      const el=document.createElement("span"); el.className="member"+(m.id===selfId?" me":"");
-      el.textContent=(m.id===selfId?"ط´ظ…ط§: ":"")+m.name; $("members").appendChild(el);
-    });
-  }
-  function leave() {
-    socket.emit("leave-room");
-    for (const pc of peers.values()) pc.close(); peers.clear();
-    document.querySelectorAll("#audioContainer audio").forEach(a=>a.remove());
-    if (localStream) localStream.getTracks().forEach(t=>t.stop());
-    localStream=null; currentCode=null; selfId=null; muted=false;
-    $("mute").textContent="ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†"; showRoom(false); status("ط§ط² ع¯ط±ظˆظ‡ ط®ط§ط±ط¬ ط´ط¯غŒ.");
-  }
-  $("create").addEventListener("click",()=>enter("create"));
-  $("join").addEventListener("click",()=>enter("join"));
-  $("leave").addEventListener("click",leave);
-  $("mute").addEventListener("click",()=>{
-    if (!localStream) return;
-    muted=!muted; localStream.getAudioTracks().forEach(t=>t.enabled=!muted);
-    $("mute").textContent=muted?"ًں”‡ ط±ظˆط´ظ† ع©ط±ط¯ظ† ظ…غŒع©ط±ظˆظپظˆظ†":"ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†";
-    status(muted?"ظ…غŒع©ط±ظˆظپظˆظ† ظ‚ط·ط¹ ط§ط³طھ.":"ظ…غŒع©ط±ظˆظپظˆظ† ط±ظˆط´ظ† ط§ط³طھ.",true);
-  });
-  $("copyCode").addEventListener("click",async()=>{
-    try { await navigator.clipboard.writeText(currentCode); status("ع©ط¯ ع¯ط±ظˆظ‡ ع©ظ¾غŒ ط´ط¯.",true); }
-    catch { status("ع©ط¯ ع¯ط±ظˆظ‡ ط±ط§ ط¯ط³طھغŒ ع©ظ¾غŒ ع©ظ†: "+currentCode,true); }
-  });
-  window.addEventListener("beforeunload",()=>{ if(localStream) localStream.getTracks().forEach(t=>t.stop()); });
-})();
-</script>
+
+      if (!roomCode) {
+        alert("کد گروه را وارد کن یا گروه جدید بساز.");
+        return;
+      }
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("برای استفاده از میکروفون باید سایت روی HTTPS باز شود.");
+        return;
+      }
+
+      $("join").disabled = true;
+      $("create").disabled = true;
+
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          },
+          video: false
+        });
+
+        socket = io();
+
+        socket.on("connect", () => {
+          myId = socket.id;
+          socket.emit("join-room", {
+            room: roomCode,
+            name: nickname,
+            create: createNew
+          });
+        });
+
+        socket.on("room-joined", data => {
+          $("entry").classList.add("hidden");
+          $("chat").classList.remove("hidden");
+          $("roomCode").textContent = roomCode;
+          setStatus("به گروه متصل شدی؛ منتظر اتصال صوتی اعضا...");
+          memberNames = data.members || {};
+          renderMembers();
+        });
+
+        socket.on("user-joined", async data => {
+          memberNames[data.id] = data.name;
+          renderMembers();
+          await createPeer(data.id, true);
+        });
+
+        socket.on("user-left", id => {
+          if (peers[id]) {
+            peers[id].close();
+            delete peers[id];
+          }
+          delete memberNames[id];
+          renderMembers();
+        });
+
+        socket.on("signal", async data => {
+          let pc = peers[data.from];
+          if (!pc) pc = await createPeer(data.from, false);
+
+          try {
+            if (data.signal.description) {
+              await pc.setRemoteDescription(data.signal.description);
+
+              if (data.signal.description.type === "offer") {
+                const answer = await pc.createAnswer();
+                await pc.setLocalDescription(answer);
+                socket.emit("signal", {
+                  to: data.from,
+                  signal: { description: pc.localDescription }
+                });
+              }
+            } else if (data.signal.candidate) {
+              await pc.addIceCandidate(data.signal.candidate);
+            }
+          } catch (err) {
+            console.error("Signal error:", err);
+          }
+        });
+
+        socket.on("connect_error", () => {
+          setStatus("اتصال ناموفق؛ سرور را بررسی کن.");
+        });
+
+        socket.on("room-error", message => {
+          alert(message || "ورود به گروه ناموفق بود.");
+          cleanup();
+        });
+
+      } catch (err) {
+        alert("دسترسی میکروفون داده نشد یا مرورگر اجازه استفاده نداد.");
+        cleanup();
+      }
+    }
+
+    async function createPeer(peerId, offerer) {
+      if (peers[peerId]) return peers[peerId];
+
+      const pc = new RTCPeerConnection(rtcConfig);
+      peers[peerId] = pc;
+
+      localStream.getTracks().forEach(track => {
+        pc.addTrack(track, localStream);
+      });
+
+      pc.onicecandidate = event => {
+        if (event.candidate && socket) {
+          socket.emit("signal", {
+            to: peerId,
+            signal: { candidate: event.candidate }
+          });
+        }
+      };
+
+      pc.ontrack = event => {
+        let audio = document.getElementById("audio-" + peerId);
+        if (!audio) {
+          audio = document.createElement("audio");
+          audio.id = "audio-" + peerId;
+          audio.autoplay = true;
+          audio.playsInline = true;
+          document.body.appendChild(audio);
+        }
+        audio.srcObject = event.streams[0];
+        audio.play().catch(() => {
+          setStatus("برای شنیدن صدا، یک بار روی صفحه کلیک کن.");
+        });
+      };
+
+      pc.onconnectionstatechange = () => {
+        if (pc.connectionState === "connected") {
+          setStatus("اتصال صوتی برقرار است.");
+        }
+      };
+
+      if (offerer) {
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        socket.emit("signal", {
+          to: peerId,
+          signal: { description: pc.localDescription }
+        });
+      }
+
+      return pc;
+    }
+
+    function renderMembers() {
+      const box = $("members");
+      box.replaceChildren();
+
+      Object.entries(memberNames).forEach(([id, name]) => {
+        const item = document.createElement("div");
+        item.className = "member";
+        const label = document.createElement("span");
+        label.textContent = name + (id === myId ? " (شما)" : "");
+        const state = document.createElement("span");
+        state.textContent = id === myId && muted ? "🔇" : "🎙";
+        item.append(label, state);
+        box.appendChild(item);
+      });
+    }
+
+    $("mute").onclick = () => {
+      if (!localStream) return;
+      muted = !muted;
+      localStream.getAudioTracks().forEach(track => track.enabled = !muted);
+      $("mute").textContent = muted ? "🔇 روشن کردن میکروفون" : "🎙 قطع میکروفون";
+      renderMembers();
+    };
+
+    $("leave").onclick = cleanup;
+
+    function cleanup() {
+      Object.values(peers).forEach(pc => pc.close());
+      peers = {};
+
+      document.querySelectorAll("audio[id^='audio-']").forEach(a => {
+        a.srcObject = null;
+        a.remove();
+      });
+
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+        localStream = null;
+      }
+
+      if (socket) {
+        socket.disconnect();
+        socket = null;
+      }
+
+      memberNames = {};
+      muted = false;
+      $("chat").classList.add("hidden");
+      $("entry").classList.remove("hidden");
+      $("join").disabled = false;
+      $("create").disabled = false;
+      $("mute").textContent = "🎙 قطع میکروفون";
+    }
+  </script>
 </body>
 </html>
