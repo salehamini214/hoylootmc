@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HOYLOTT Voice</title>
+<style>
+:root{color-scheme:dark;--bg:#0a1020;--panel:#121d33;--line:#293958;--text:#edf4ff;--muted:#a6b5cf;--blue:#4c8dff;--green:#45d6a0;--red:#ff6376}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#172b4c,#0a1020 55%);font-family:Tahoma,Arial,sans-serif;color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+main{width:min(760px,100%)}header{text-align:center;margin-bottom:20px}header .logo{font-size:42px}h1{margin:8px 0;font-size:28px}p{color:var(--muted);line-height:1.8;margin:8px 0}.panel{background:rgba(18,29,51,.96);border:1px solid var(--line);border-radius:18px;padding:20px;margin:12px 0;box-shadow:0 15px 50px #0003}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}label{color:var(--muted);font-size:14px}input{width:100%;background:#091326;border:1px solid var(--line);border-radius:10px;padding:13px;color:var(--text);font:inherit;outline:none}input:focus{border-color:var(--blue)}button{font:inherit;border:0;border-radius:10px;padding:12px 14px;cursor:pointer;font-weight:bold;background:var(--blue);color:white}button.secondary{background:#243653}button.danger{background:#8b3042}button:disabled{opacity:.45;cursor:not-allowed}.notice{background:#1a2c48;border-radius:10px;padding:12px;color:#c9dcff;font-size:13px;line-height:1.8}.status{padding:10px;border-radius:10px;background:#091326;color:var(--muted);margin-top:12px;min-height:42px}.roomtop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.code{font-size:24px;font-weight:bold;letter-spacing:3px;color:var(--green);direction:ltr}.members{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.member{background:#203451;border:1px solid #344b70;border-radius:999px;padding:8px 12px;font-size:13px}.member.me{border-color:var(--green)}.controls{display:flex;gap:10px;flex-wrap:wrap}.controls button{flex:1;min-width:120px}.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}.footer{text-align:center;color:#8292af;font-size:12px;margin-top:14px}@media(max-width:560px){.grid{grid-template-columns:1fr}.panel{padding:15px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="logo">ًںژ™ï¸ڈ</div><h1>HOYLOTT Voice</h1><p>ظˆغŒط³â€Œع†طھ ع¯ط±ظˆظ‡غŒ ط¯ط± ظ…ط±ظˆط±ع¯ط±ط› ط¨ط¯ظˆظ† ظ†طµط¨ ظ…ظˆط¯ ظ…ط§غŒظ†ع©ط±ظپطھ</p></header>
+<section id="lobby" class="panel">
+<div class="notice">ط¨ط±ط§غŒ طµط­ط¨طھطŒ ظ…ط±ظˆط±ع¯ط± ط¨ط§غŒط¯ ط§ط¬ط§ط²ظ‡ ط§ط³طھظپط§ط¯ظ‡ ط§ط² ظ…غŒع©ط±ظˆظپظˆظ† ط¯ط§ط´طھظ‡ ط¨ط§ط´ط¯. ط¨ط±ط§غŒ ط§ط³طھظپط§ط¯ظ‡ ط§ط² ط§غŒظ†طھط±ظ†طھطŒ ط³ط§غŒطھ ط¨ط§غŒط¯ ط±ظˆغŒ HTTPS ط¨ط§ط´ط¯. ط§غŒظ† ظ†ط³ط®ظ‡ ط¨ط±ط§غŒ ع¯ط±ظˆظ‡â€Œظ‡ط§غŒ ع©ظˆع†ع© طھط§ غ¸ ظ†ظپط± ط·ط±ط§ط­غŒ ط´ط¯ظ‡ ط§ط³طھ.</div>
+<div class="field"><label for="name">ط§ط³ظ… ظ†ظ…ط§غŒط´غŒ</label><input id="name" maxlength="24" placeholder="ظ…ط«ظ„ط§ظ‹ Steve" autocomplete="nickname"></div>
+<div class="grid">
+<div><button id="create" style="width:100%">ط³ط§ط®طھ ع¯ط±ظˆظ‡ ط¬ط¯غŒط¯</button></div>
+<div><div class="field" style="margin-top:0"><label for="roomCode">ع©ط¯ ع¯ط±ظˆظ‡</label><input id="roomCode" maxlength="6" placeholder="ظ…ط«ظ„ط§ظ‹ A7K2PQ" dir="ltr"></div><button id="join" style="width:100%">ظˆط±ظˆط¯ ط¨ظ‡ ع¯ط±ظˆظ‡</button></div>
+</div>
+<div id="lobbyStatus" class="status" role="status">ط§ط³ظ… ط¨ط²ظ† ظˆ ع¯ط±ظˆظ‡ ط¨ط³ط§ط² غŒط§ ط¨ط§ ع©ط¯ ظˆط§ط±ط¯ ط´ظˆ.</div>
+</section>
+<section id="room" class="panel hidden">
+<div class="roomtop"><div><div class="small">ع©ط¯ ط¯ط¹ظˆطھ ع¯ط±ظˆظ‡</div><div id="activeCode" class="code">------</div></div><button id="copyCode" class="secondary">ع©ظ¾غŒ ع©ط¯</button></div>
+<p>ط¨ط±ط§غŒ ط¯ط¹ظˆطھ ط¯ظˆط³طھط§ظ†طŒ ع©ط¯ ط¨ط§ظ„ط§ ط±ط§ ط¨ط±ط§غŒط´ط§ظ† ط¨ظپط±ط³طھ.</p>
+<div id="members" class="members"></div>
+<div class="controls"><button id="mute">ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†</button><button id="leave" class="danger">ط®ط±ظˆط¬ ط§ط² ع¯ط±ظˆظ‡</button></div>
+<div id="roomStatus" class="status" role="status">ط¯ط± ط­ط§ظ„ ط§طھطµط§ظ„...</div>
+<div id="audioContainer" class="hidden"></div>
+</section>
+<p class="footer">HOYLOTT â€¢ WebVoice preview</p>
+</main>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+(() => {
+  const socket = io();
+  const $ = id => document.getElementById(id);
+  let localStream = null, currentCode = null, selfId = null, muted = false;
+  const peers = new Map();
+  const config = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
+
+  function status(text, room=false) { $(room ? "roomStatus" : "lobbyStatus").textContent = text; }
+  function showRoom(on) { $("lobby").classList.toggle("hidden", on); $("room").classList.toggle("hidden", !on); }
+  async function getMic() {
+    if (!window.isSecureContext && location.hostname !== "localhost") throw new Error("ط¨ط±ط§غŒ ظ…غŒع©ط±ظˆظپظˆظ† ط¨ط§غŒط¯ ط³ط§غŒطھ HTTPS ط¨ط§ط´ط¯.");
+    if (!navigator.mediaDevices?.getUserMedia) throw new Error("ط§غŒظ† ظ…ط±ظˆط±ع¯ط± ط¯ط³طھط±ط³غŒ ظ…غŒع©ط±ظˆظپظˆظ† ط±ط§ ظ¾ط´طھغŒط¨ط§ظ†غŒ ظ†ظ…غŒâ€Œع©ظ†ط¯.");
+    return navigator.mediaDevices.getUserMedia({ audio: { echoCancellation:true, noiseSuppression:true, autoGainControl:true }, video:false });
+  }
+  async function enter(mode) {
+    const name = $("name").value.trim();
+    if (!name) { status("ط§ظˆظ„ ط§ط³ظ… ظ†ظ…ط§غŒط´غŒâ€Œط§طھ ط±ط§ ظˆط§ط±ط¯ ع©ظ†."); $("name").focus(); return; }
+    $("create").disabled = $("join").disabled = true;
+    try {
+      status("ط¯ط± ط­ط§ظ„ ع¯ط±ظپطھظ† ط§ط¬ط§ط²ظ‡ ظ…غŒع©ط±ظˆظپظˆظ†...");
+      localStream = await getMic();
+      const result = await new Promise(resolve => {
+        if (mode === "create") socket.emit("create-room", {name}, resolve);
+        else socket.emit("join-room", {name, code:$("roomCode").value.trim().toUpperCase()}, resolve);
+      });
+      if (!result?.ok) { localStream.getTracks().forEach(t=>t.stop()); localStream=null; status(result?.error || "ظˆط±ظˆط¯ ط§ظ†ط¬ط§ظ… ظ†ط´ط¯."); return; }
+      currentCode = result.code; selfId = result.selfId;
+      $("activeCode").textContent = currentCode;
+      showRoom(true); renderMembers(result.members);
+      status("ظ…غŒع©ط±ظˆظپظˆظ† ط±ظˆط´ظ† ط§ط³طھط› ظ…ظ†طھط¸ط± ط§طھطµط§ظ„ طµط¯ط§...", true);
+      // Existing members initiate the offer after receiving peer-joined.
+    } catch (e) {
+      if (localStream) { localStream.getTracks().forEach(t=>t.stop()); localStream=null; }
+      status(e.message || "ط¯ط³طھط±ط³غŒ ط¨ظ‡ ظ…غŒع©ط±ظˆظپظˆظ† ظ…ظ…ع©ظ† ظ†ط´ط¯.");
+    } finally { $("create").disabled = $("join").disabled = false; }
+  }
+  function makePeer(id) {
+    if (peers.has(id)) return peers.get(id);
+    const pc = new RTCPeerConnection(config);
+    if (localStream) localStream.getTracks().forEach(t => pc.addTrack(t, localStream));
+    pc.onicecandidate = e => { if (e.candidate) socket.emit("signal", {to:id, candidate:e.candidate}); };
+    pc.ontrack = e => {
+      let audio = document.getElementById("audio-"+id);
+      if (!audio) { audio = document.createElement("audio"); audio.id="audio-"+id; audio.autoplay=true; audio.playsInline=true; $("audioContainer").appendChild(audio); }
+      audio.srcObject = e.streams[0];
+      audio.play().catch(()=>status("ط¨ط±ط§غŒ ط´ظ†غŒط¯ظ† طµط¯ط§طŒ غŒع© ط¨ط§ط± ط±ظˆغŒ طµظپط­ظ‡ ط¨ط²ظ† غŒط§ ظ¾ط®ط´ طµط¯ط§ ط±ط§ ظ…ط¬ط§ط² ع©ظ†.", true));
+    };
+    pc.onconnectionstatechange = () => {
+      if (pc.connectionState === "failed") status("ط§طھطµط§ظ„ طµط¯ط§ ط¨ط±ظ‚ط±ط§ط± ظ†ط´ط¯ط› ظ…ظ…ع©ظ† ط§ط³طھ ط´ط¨ع©ظ‡ ط¨ظ‡ TURN server ظ†غŒط§ط² ط¯ط§ط´طھظ‡ ط¨ط§ط´ط¯.", true);
+    };
+    peers.set(id, pc);
+    return pc;
+  }
+  async function makeOffer(id) {
+    try { const pc=makePeer(id); const offer=await pc.createOffer(); await pc.setLocalDescription(offer); socket.emit("signal",{to:id,description:pc.localDescription}); }
+    catch(e) { console.error(e); status("ط³ط§ط®طھ ط§طھطµط§ظ„ طµظˆطھغŒ ظ†ط§ظ…ظˆظپظ‚ ط¨ظˆط¯.", true); }
+  }
+  socket.on("peer-joined", ({id}) => { if (selfId && id !== selfId) makeOffer(id); });
+  socket.on("signal", async ({from,description,candidate}) => {
+    try {
+      const pc=makePeer(from);
+      if (description) {
+        await pc.setRemoteDescription(description);
+        if (description.type === "offer") {
+          const answer=await pc.createAnswer(); await pc.setLocalDescription(answer); socket.emit("signal",{to:from,description:pc.localDescription});
+        }
+      }
+      if (candidate) await pc.addIceCandidate(candidate);
+    } catch(e) { console.error(e); }
+  });
+  socket.on("members", renderMembers);
+  socket.on("peer-left", ({id}) => {
+    const pc=peers.get(id); if (pc) pc.close(); peers.delete(id);
+    document.getElementById("audio-"+id)?.remove();
+  });
+  function renderMembers(list=[]) {
+    $("members").replaceChildren();
+    list.forEach(m => {
+      const el=document.createElement("span"); el.className="member"+(m.id===selfId?" me":"");
+      el.textContent=(m.id===selfId?"ط´ظ…ط§: ":"")+m.name; $("members").appendChild(el);
+    });
+  }
+  function leave() {
+    socket.emit("leave-room");
+    for (const pc of peers.values()) pc.close(); peers.clear();
+    document.querySelectorAll("#audioContainer audio").forEach(a=>a.remove());
+    if (localStream) localStream.getTracks().forEach(t=>t.stop());
+    localStream=null; currentCode=null; selfId=null; muted=false;
+    $("mute").textContent="ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†"; showRoom(false); status("ط§ط² ع¯ط±ظˆظ‡ ط®ط§ط±ط¬ ط´ط¯غŒ.");
+  }
+  $("create").addEventListener("click",()=>enter("create"));
+  $("join").addEventListener("click",()=>enter("join"));
+  $("leave").addEventListener("click",leave);
+  $("mute").addEventListener("click",()=>{
+    if (!localStream) return;
+    muted=!muted; localStream.getAudioTracks().forEach(t=>t.enabled=!muted);
+    $("mute").textContent=muted?"ًں”‡ ط±ظˆط´ظ† ع©ط±ط¯ظ† ظ…غŒع©ط±ظˆظپظˆظ†":"ًںژ™ï¸ڈ ظ‚ط·ط¹ ظ…غŒع©ط±ظˆظپظˆظ†";
+    status(muted?"ظ…غŒع©ط±ظˆظپظˆظ† ظ‚ط·ط¹ ط§ط³طھ.":"ظ…غŒع©ط±ظˆظپظˆظ† ط±ظˆط´ظ† ط§ط³طھ.",true);
+  });
+  $("copyCode").addEventListener("click",async()=>{
+    try { await navigator.clipboard.writeText(currentCode); status("ع©ط¯ ع¯ط±ظˆظ‡ ع©ظ¾غŒ ط´ط¯.",true); }
+    catch { status("ع©ط¯ ع¯ط±ظˆظ‡ ط±ط§ ط¯ط³طھغŒ ع©ظ¾غŒ ع©ظ†: "+currentCode,true); }
+  });
+  window.addEventListener("beforeunload",()=>{ if(localStream) localStream.getTracks().forEach(t=>t.stop()); });
+})();
+</script>
+</body>
+</html>
