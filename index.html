@@ -1,96 +1,46 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HOYLOTT | سرور ماینکرفت</title>
-  <meta name="description" content="فروشگاه و اخبار سرور ماینکرفت HOYLOTT">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><meta name="description" content="HOYLOTT Security Guard - راهنمای واکنش به دسترسی غیرمجاز روبیکا">
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="assets/style.css">
+<title>HOYLOTT Security Guard</title>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html">💎 HOYLOTT</a>
-    <nav>
-      <a href="#shop">فروشگاه</a>
-      <a href="#news">اخبار</a>
-      <a href="#support">پشتیبانی</a>
-    </nav>
-  </header>
+<header class="topbar"><a class="brand" href="./"><span class="shield">⬡</span><span><strong>HOYLOTT</strong><small>SECURITY GUARD</small></span></a><span class="version">نسخه ۰.۲</span></header>
+<main class="container">
+<section class="hero"><div class="hero-icon">🛡️</div><p class="eyebrow">محافظ امنیت حساب روبیکا</p><h1>وقتی حسابت در خطر است،<br><em>آگاهانه اقدام کن</em></h1><p class="muted">راهنمای امن برای بررسی پیام‌های مشکوک، ثبت گزارش و استفاده از مسیر پشتیبانی روبیکا.</p><div class="status"><span class="dot"></span> راهنمای امنیتی آماده است</div></section>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">MINECRAFT • SURVIVAL</span>
-        <h1 id="hero-title">به دنیای HOYLOTT خوش اومدی!</h1>
-        <p id="hero-description">ماجراجویی کن، پیشرفت کن و با دوستات بازی کن.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#shop">مشاهده فروشگاه</a>
-          <button class="btn secondary" id="copy-address" type="button">
-            کپی آدرس سرور
-          </button>
-        </div>
-        <p class="server-address" id="server-address">hoylott.spwn.ir</p>
-        <p id="copy-status" class="muted" aria-live="polite"></p>
-      </div>
-    </section>
+<section class="panel emergency">
+<div class="section-heading"><div><span class="num">01</span><h2>نجات اضطراری حساب روبیکا</h2></div><span class="tag">اقدام توسط مالک</span></div>
+<p>اگر شخص ناشناسی به حساب تو دسترسی دارد و سیم‌کارت ثبت‌شده حساب دست خودت است، می‌توانی مسیر زیر را بررسی کنی.</p>
+<div class="ussd">*999# <button id="copyCode" class="copy">کپی کد</button></div>
+<div class="flow">
+<div class="flow-step"><b>۱</b><span>با همان سیم‌کارت ثبت‌شده در حساب، کد بالا را شماره‌گیری کن.</span></div>
+<div class="flow-step"><b>۲</b><span>در منوی بازشده، «پشتیبانی» را انتخاب کن (در راهنماهای منتشرشده گزینه ۲).</span></div>
+<div class="flow-step"><b>۳</b><span>«غیرفعال کردن دستگاه‌های فعال» را انتخاب کن (در راهنماهای منتشرشده گزینه ۱).</span></div>
+<div class="flow-step"><b>۴</b><span>متن پیام و گزینه نهایی را بخوان و فقط در صورت اطمینان تأیید کن.</span></div>
+</div>
+<div class="warning"><strong>مهم:</strong> این عملیات ممکن است تمام دستگاه‌های دیگر متصل به حساب را خارج کند، نه فقط دستگاه مهاجم. شماره گزینه‌ها ممکن است تغییر کند؛ متن منوی USSD را ملاک قرار بده. این وب‌سایت کد را اجرا نمی‌کند و به حساب تو دسترسی ندارد.</div>
+<p class="source-note">این مسیر بر اساس راهنماهای عمومی منتشرشده درج شده و تأیید مستقیم از صفحه رسمی روبیکا در این نسخه انجام نشده است. اگر منو متفاوت بود، ادامه نده و از پشتیبانی روبیکا راهنمایی بگیر.</p>
+</section>
 
-    <section class="section" id="shop">
-      <div class="section-heading">
-        <span class="eyebrow">HOYLOTT STORE</span>
-        <h2>فروشگاه سرور</h2>
-        <p>قیمت‌ها رو ببین و برای ثبت سفارش با پشتیبانی تماس بگیر.</p>
-      </div>
-      <div class="cards" id="shop-items">
-        <article class="item-card">
-          <div class="item-icon">👑</div>
-          <h3>VIP سی‌روزه</h3>
-          <p class="price">۱۱۰٬۰۰۰ تومان</p>
-        </article>
-        <article class="item-card">
-          <div class="item-icon">🪙</div>
-          <h3>۱۰٬۰۰۰ سکه</h3>
-          <p class="price">۲۰٬۰۰۰ تومان</p>
-        </article>
-        <article class="item-card">
-          <div class="item-icon">💰</div>
-          <h3>۳۰٬۰۰۰ سکه</h3>
-          <p class="price">۶۰٬۰۰۰ تومان</p>
-        </article>
-      </div>
-      <p class="shop-note">برای ثبت سفارش: <a href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">پشتیبانی روبیکا</a> — آیدی سفارش: <strong>@Saleh574</strong></p>
-    </section>
+<section class="panel"><div class="section-heading"><div><span class="num">02</span><h2>بعد از قطع دستگاه‌های ناشناس</h2></div></div>
+<label class="check"><input type="checkbox"> دوباره وارد حساب شو و وضعیت دستگاه‌های فعال را بررسی کن.</label>
+<label class="check"><input type="checkbox"> تأیید دومرحله‌ای را فعال کن یا رمز آن را تغییر بده.</label>
+<label class="check"><input type="checkbox"> ایمیل بازیابی و امنیت سیم‌کارت را بررسی کن.</label>
+<label class="check"><input type="checkbox"> کد ورود و رمز را به هیچ‌کس نده؛ حتی مدعیان پشتیبانی.</label>
+<label class="check"><input type="checkbox"> پیام‌ها، تغییرات پروفایل و فعالیت‌های مشکوک را بررسی کن.</label>
+</section>
 
-    <section class="section news-section" id="news">
-      <div class="section-heading">
-        <span class="eyebrow">LATEST UPDATES</span>
-        <h2>اخبار و اطلاعیه‌ها</h2>
-        <p>جدیدترین خبرهای HOYLOTT</p>
-      </div>
-      <div class="cards" id="news-items">
-        <p class="empty-state">هنوز خبری منتشر نشده است.</p>
-      </div>
-    </section>
+<section class="panel"><div class="section-heading"><div><span class="num">03</span><h2>بررسی پیام یا لینک مشکوک</h2></div></div>
+<label for="message">متن پیام یا لینک را وارد کن</label><textarea id="message" rows="5" placeholder="مثلاً: برای دریافت جایزه، کد ورود روبیکا را ارسال کن..."></textarea>
+<button id="analyze" class="primary">بررسی امنیتی</button><div id="result" class="result" aria-live="polite">نتیجه بررسی اینجا نمایش داده می‌شود.</div>
+<p class="hint">این بررسی ساده است؛ نبود هشدار به معنی امن بودن پیام یا لینک نیست.</p></section>
 
-    <section class="section support-section" id="support">
-      <div class="support-panel">
-        <div>
-          <span class="eyebrow">WE'RE HERE TO HELP</span>
-          <h2>پشتیبانی HOYLOTT</h2>
-          <p>برای سفارش، سؤال یا گزارش مشکل با ما در ارتباط باش.</p>
-        </div>
-        <div class="support-actions">
-          <a class="btn primary" href="mailto:salehamini214@gmail.com">ارسال ایمیل</a>
-          <a class="btn secondary" href="https://rubika.ir/hoylottmc" target="_blank" rel="noopener">ورود به روبیکا</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© <span id="year"></span> HOYLOTT — ساخته‌شده برای جامعه ماینکرفت</p>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<section class="panel"><div class="section-heading"><div><span class="num">04</span><h2>گزارش‌های این دستگاه</h2></div></div>
+<p class="muted small">گزارش‌ها فقط در حافظه مرورگر همین دستگاه ذخیره می‌شوند و به سرور ارسال نمی‌شوند.</p>
+<div class="actions"><button id="export" class="secondary">خروجی گزارش‌ها</button><button id="clear" class="danger">پاک‌کردن گزارش‌ها</button></div><div id="logs" class="logs">هنوز گزارشی ثبت نشده است.</div></section>
+<footer>HOYLOTT Network · Security Guard · v0.2</footer>
+</main><script src="assets/app.js"></script>
+</body></html>
